@@ -1,6 +1,6 @@
 const { Shop } = require('./gilded-rose');
 const {
-  RandomItem, LegendaryItem, AgedBrie, BackstagePass,
+  RandomItem, LegendaryItem, AgedBrie, BackstagePass, ConjuredItem,
 } = require('./item');
 
 describe('Gilded Rose', () => {
@@ -66,5 +66,21 @@ describe('Gilded Rose', () => {
     const pass = items.shift();
     expect(pass.sellIn).toEqual(4);
     expect(pass.quality).toEqual(23);
+  });
+
+  test('Conjured Items decrease in quality twice as quickly', () => {
+    const GildedRose = new Shop([new ConjuredItem('mana cakes', 5, 10)]);
+    const items = GildedRose.updateQuality();
+    const cake = items.shift();
+    expect(cake.quality).toEqual(8);
+    expect(cake.sellIn).toEqual(4);
+  });
+
+  test('Conjured items decrease even further in quality after use-by date', () => {
+    const GildedRose = new Shop([new ConjuredItem('mana', 0, 10)]);
+    const items = GildedRose.updateQuality();
+    const mana = items.shift();
+    expect(mana.sellIn).toEqual(-1);
+    expect(mana.quality).toEqual(6);
   });
 });

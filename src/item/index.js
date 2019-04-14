@@ -3,6 +3,7 @@ const AgedBrie = require('./aged-brie');
 const BackstagePass = require('./backstage-pass');
 const LegendaryItem = require('./legendary-item');
 const RandomItem = require('./random-item');
+const ConjuredItem = require('./conjured-item');
 
 module.exports = {
   Item,
@@ -10,4 +11,5 @@ module.exports = {
   BackstagePass,
   LegendaryItem,
   RandomItem,
+  ConjuredItem,
 };
