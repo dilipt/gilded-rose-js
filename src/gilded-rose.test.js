@@ -95,4 +95,20 @@ describe('Gilded Rose', () => {
     expect(mana.sellIn).toEqual(-1);
     expect(mana.quality).toEqual(6);
   });
+
+  test('should handle more than one item', () => {
+    const GildedRose = new Shop([
+      new Item('Conjured Item', 5, 10),
+      new Item(Specials.Brie, 5, 5),
+    ]);
+
+    const items = GildedRose.updateQuality();
+
+    expect(items.length).toEqual(2);
+
+    expect(items[0].quality).toEqual(8);
+    expect(items[0].sellIn).toEqual(4);
+    expect(items[1].quality).toEqual(6);
+    expect(items[1].sellIn).toEqual(4);
+  });
 });
