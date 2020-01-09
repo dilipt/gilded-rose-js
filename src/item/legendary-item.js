@@ -1,6 +1,6 @@
 const Item = require('./item');
 
-module.exports = class LegendaryItem extends Item {
+class LegendaryItem extends Item {
   constructor(name = 'Sulfuras, Hand of Ragnaros') {
     super(name, 0, 80);
   }
@@ -8,4 +8,6 @@ module.exports = class LegendaryItem extends Item {
   update() {
     this.sellIn -= 1;
   }
-};
+}
+
+module.exports = LegendaryItem;
