@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "gilded-rose.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:dilipt/gilded-rose-js.git"
+  },
   "scripts": {
     "start": "node index.js",
     "test": "jest"
