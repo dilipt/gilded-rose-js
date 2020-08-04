@@ -8,11 +8,7 @@ const {
 
 class Shop {
   constructor(items = []) {
-    this.items = items;
-  }
-
-  updateQuality() {
-    this.items = this.items.map((item) => {
+    this.items = items.map((item) => {
       switch (item.name) {
         case 'Sulfuras, Hand of Ragnaros': return new LegendaryItem();
         case 'Aged Brie': return new AgedBrie(item.sellIn, item.quality);
@@ -21,7 +17,10 @@ class Shop {
         default: return new RandomItem(item.name, item.sellIn, item.quality);
       }
     });
-    this.items.forEach(item => item.update());
+  }
+
+  updateQuality() {
+    this.items.forEach((item) => item.update());
     return this.items;
   }
 }
